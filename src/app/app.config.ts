@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app.routes';  // Import your routing module
+import { RouterModule } from '@angular/router';  // Import RouterModule
+import { NgxApexchartsModule } from 'ngx-apexcharts';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { AppRoutingModule } from './app.routes';  // Import your routing module
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,  // Import your routing module
+    AppRoutingModule, 
+    RouterModule,   
+    NgxApexchartsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]  // Bootstrapping the main AppComponent
+  bootstrap: [AppComponent]  
 })
 export class AppModule {}

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';  // URL of your backend
+  // URL of backend
+  private apiUrl = 'http://localhost:3000';  
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +38,9 @@ export class AuthService {
 
   // Check if the user is logged in
   isLoggedIn(): boolean {
+    //!! is used to convert the result of getToken() into a boolean. 
+    //If the token exists, the method returns true (logged in), otherwise
+    // it returns false (not logged in).
     return !!this.getToken();
   }
 }

@@ -1,3 +1,42 @@
-<h2>Welcome to the Dashboard</h2>
-<p>You're logged in!</p>
-<button (click)="logout()">Logout</button>
+<div class="dashboard-container">
+  
+    <!-- Left Section - Future Use -->
+    <div class="left-section">
+      <h3>Future Use</h3>
+      <p>This space is reserved for future content.</p>
+    </div>
+  
+    <!-- Right Section - Pie Chart -->
+    <div class="right-section">
+      <h3 class="chart-title">User Type Distribution</h3>
+      <apx-chart 
+        [series]="chartOptions.series" 
+        [chart]="chartOptions.chart" 
+        [labels]="chartOptions.labels" 
+        [responsive]="chartOptions.responsive">
+      </apx-chart>
+    </div>
+  
+    <!-- Bottom Section - User List -->
+    <div class="bottom-section">
+      <h3>User List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Enabled</th>
+            <th>Active (Last Login)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.username }}</td>
+            <td>{{ user.enabled }}</td>
+            <td>{{ isActive(user.lastLogonTime) ? 'true' : 'false' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+  

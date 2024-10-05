@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   username = '';
   password = '';
+  // Used to display error messages in the form if the login fails (e.g., wrong credentials).
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
