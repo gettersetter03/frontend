@@ -1,51 +1,48 @@
-/* Container that holds all sections (left, right, bottom) */
+/* General layout */
 .dashboard-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height: 100vh;  /* Full viewport height */
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
     box-sizing: border-box;
   }
   
-  /* Left section (future use) */
-  .left-section {
-    flex: 1;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    height: 50%;  /* Top half of the screen */
+  /* Top container for Future Use and Pie Chart */
+  .top-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    height: 350px;  /* Fixed height for the top section */
   }
   
-  /* Right section (Pie chart) */
-  .right-section {
+  /* Left section (Future Use) */
+  .left-section {
     flex: 1;
     padding: 20px;
+    border: 1px solid #ccc; /* Add border for differentiation */
+    margin-right: 10px;
+    background-color: #f7f7f7; /* Add subtle background */
+  }
+  
+  /* Right section (Pie Chart) */
+  .right-section {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;  /* Top half of the screen */
-    border: 1px solid #ccc;
-  }
-  
-  /* Title for the chart */
-  .chart-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-  }
-  
-  /* Styling the chart and making it bigger */
-  apx-chart {
-    width: 400px;  /* Increase the chart size */
-    height: 400px; /* Increase the chart size */
+    padding: 20px;
+    border: 1px solid #ccc; /* Add border for differentiation */
+    background-color: #f7f7f7; /* Add subtle background */
   }
   
   /* Bottom section (User List) */
   .bottom-section {
-    flex-basis: 100%;
-    padding: 20px;
-    height: 50%;  /* Bottom half of the screen */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
   
   .bottom-section table {
@@ -53,13 +50,34 @@
     border-collapse: collapse;
   }
   
-  .bottom-section th, .bottom-section td {
+  .bottom-section th,
+  .bottom-section td {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  .bottom-section th {
-    background-color: #f2f2f2;
-    text-align: left;
+  /* Ensuring the last column is displayed properly */
+  .bottom-section th:last-child,
+  .bottom-section td:last-child {
+    white-space: nowrap;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .pagination-controls button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
   }
   

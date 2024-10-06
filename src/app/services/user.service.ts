@@ -9,13 +9,20 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000';  // Your backend URL
+  // the backend URL
+  private apiUrl = 'http://localhost:3000';  
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`);
+  getUsers(page: number, limit: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/users`, {
+      params: {
+        page: page.toString(),
+        limit: limit.toString()
+      }
+    });
   }
+  
 
   getUserTypes(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/users/types`);

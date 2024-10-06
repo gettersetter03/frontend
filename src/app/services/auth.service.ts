@@ -23,17 +23,17 @@ export class AuthService {
 
   // Store the JWT token
   storeToken(token: string) {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
   }
 
   // Retrieve the JWT token
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   // Logout (remove token)
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 
   // Check if the user is logged in

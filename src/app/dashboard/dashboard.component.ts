@@ -1,14 +1,9 @@
 import { OnInit } from '@angular/core'; // Add OnInit
 import { AuthService } from '../services/auth.service'; // Keep AuthService
 import { Router } from '@angular/router'; // Keep Router
-import { HttpClient } from '@angular/common/http'; // Import HttpClient for API calls
-import { ChartOptions, ChartType } from 'chart.js'; // Import for Pie Chart
-import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service'; // Import the service
 import { User } from '../models/user.model';
-
 import { Component, ViewChild } from '@angular/core';
-import { ChartComponent } from 'ngx-apexcharts';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +15,10 @@ export class DashboardComponent implements OnInit {
   username = ''; // Already here
   users: any[] = []; // Array to store users
   today = new Date(); // For calculating active status
+
+  currentPage: number = 1;
+  totalPages: number = 1;
+  limit: number = 10;
 
   // For the Pie Chart
   userTypeCounts = { s: 0, m: 0, x: 0 }; // To count user types
@@ -33,6 +32,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadUsers();
     // Fetch user types and update the chart when the component loads
     this.userService.getUserTypes().subscribe((userTypeCounts) => {
       // Update the pie chart based on the userTypeCounts from backend
@@ -58,9 +58,34 @@ export class DashboardComponent implements OnInit {
       };
     });
 
-    this.userService.getUsers().subscribe((users) => {
-      this.users = users; // Populate the users list
-    });
+    // this.userService.getUsers().subscribe((users) => {
+    //   this.users = users; // Populate the users list
+    // });
+  }
+
+  loadUsers() {
+    this.userService
+      .getUsers(this.currentPage, this.limit)
+      .subscribe((response) => {
+        this.users = response.users;
+        this.totalPages = response.totalPages;
+      });
+  }
+
+  // Navigate to the next page
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadUsers();
+    }
+  }
+
+  // Navigate to the previous page
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadUsers();
+    }
   }
 
   categorizeUsers(users: User[]): void {
