@@ -1,0 +1,83 @@
+/* General layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Top container for Future Use and Pie Chart */
+  .top-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    height: 350px;  /* Fixed height for the top section */
+  }
+  
+  /* Left section (Future Use) */
+  .left-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc; /* Add border for differentiation */
+    margin-right: 10px;
+    background-color: #f7f7f7; /* Add subtle background */
+  }
+  
+  /* Right section (Pie Chart) */
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc; /* Add border for differentiation */
+    background-color: #f7f7f7; /* Add subtle background */
+  }
+  
+  /* Bottom section (User List) */
+  .bottom-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .bottom-section table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .bottom-section th,
+  .bottom-section td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* Ensuring the last column is displayed properly */
+  .bottom-section th:last-child,
+  .bottom-section td:last-child {
+    white-space: nowrap;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .pagination-controls button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
+  }
+  
